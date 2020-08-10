@@ -2,6 +2,7 @@
     "name": "chenbo29/tool",
     "description": "Project common tools by chenbotome@163.com",
     "type": "library",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "chenbo",

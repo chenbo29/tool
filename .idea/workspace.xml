@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81cbaf93-d5be-4a08-a19b-45d2597e766d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+    <list default="true" id="81cbaf93-d5be-4a08-a19b-45d2597e766d" name="Default Changelist" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,12 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -65,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597032202954</updated>
       <workItem from="1597032204328" duration="1251000" />
-      <workItem from="1597038390291" duration="308000" />
+      <workItem from="1597038390291" duration="962000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1597038490433</created>
@@ -74,7 +80,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597038490434</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix">
+      <created>1597038702638</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597038702638</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix">
+      <created>1597038910527</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597038910527</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,9 +117,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1597038703841">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1597039352078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1597038703841" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1597039352078" />
+    <state x="769" y="364" key="git4idea.ui.GitTagDialog" timestamp="1597039298274">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="364" key="git4idea.ui.GitTagDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1597039298274" />
   </component>
 </project>
