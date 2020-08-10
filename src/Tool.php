@@ -9,7 +9,7 @@ class Tool
     /**
      * @return DateTime
      */
-    public static function datetime() {
+    public static function DateTime() {
         return new DateTime();
     }
 
