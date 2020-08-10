@@ -1,6 +1,6 @@
 <?php
 
-namespace tool;
+namespace chenbo29;
 
 /**
  * Class DateTime
@@ -8,22 +8,9 @@ namespace tool;
  */
 class DateTime
 {
-    private static $instance;
-
-    private function __construct()
-    {
-    }
-
-    public static function instance() {
-        if (empty(self::$instance)) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
     /**
      * @param $time
-     * @return string
+     * @return false|string
      */
     public function ago($time)
     {
