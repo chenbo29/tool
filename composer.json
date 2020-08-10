@@ -9,7 +9,7 @@
             "email": "chenbotome@163.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "0.0.1",
     "require": {
         "php": "^7.1"
     }
