@@ -1,10 +1,10 @@
 <?php
 
 
-namespace chenbo29;
+namespace Tool;
 
 
-class Tool
+class Instance
 {
     /**
      * @return DateTime
@@ -16,8 +16,8 @@ class Tool
     /**
      * @param $keyId 密钥id
      * @param $keySecret 密钥secret
-     * @param $endPoint
-     * @param $ossDomain
+     * @param $endPoint 地域节点
+     * @param $ossDomain 访问域名
      * @param $bucket
      * @return Oss
      */

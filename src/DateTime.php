@@ -1,6 +1,6 @@
 <?php
 
-namespace chenbo29;
+namespace Tool;
 
 /**
  * Class DateTime
