@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Tool;
+namespace chenbo29\Tool;
 
 
 use OSS\Core\OssException;
 use OSS\OssClient;
 use Ramsey\Uuid\Uuid;
-use Tool\inter\Upload;
+use chenbo29\Tool\inter\Upload;
 
 class Oss implements Upload
 {

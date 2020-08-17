@@ -1,6 +1,6 @@
 <?php
 
-namespace Tool\inter;
+namespace chenbo29\Tool\inter;
 
 interface Upload
 {

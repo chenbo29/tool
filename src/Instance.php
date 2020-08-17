@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tool;
+namespace chenbo29\Tool;
 
 
 class Instance

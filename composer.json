@@ -9,6 +9,11 @@
             "email": "chenbotome@163.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "chenbo29\\Tool\\": "src/"
+        }
+    },
     "minimum-stability": "stable",
     "require": {
         "php": "^7.1",
