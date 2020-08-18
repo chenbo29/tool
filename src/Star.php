@@ -6,7 +6,7 @@ namespace chenbo29\Tool;
 
 class Star
 {
-    public function fontawesome(int $number, string $color) {
+    public function fontawesome(int $number, string $color = '#FFCC66') {
         $data = [];
         if ($number < 5) {
             $data = [
