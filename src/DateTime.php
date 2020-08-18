@@ -22,6 +22,7 @@ class DateTime
             return $time;
         } else {
             if ($dur < 60) {
+                if ($dur === 0) return '刚刚';
                 return $dur . '秒前';
             } else {
                 if ($dur < 3600) {
@@ -33,7 +34,7 @@ class DateTime
                         if ($dur < 259200) {
                             return floor($dur / 86400) . '天前';
                         } else {
-                            return date('Y-m-d', strtotime($time));
+                            return date_diff(new \DateTime($time), new \DateTime())->m . '月前';
                         }
                     }
                 }
