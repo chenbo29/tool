@@ -10,35 +10,23 @@ class DateTime
 {
     /**
      * @param $time
-     * @return false|string
+     * @return string
+     * @throws \Exception
      */
     public function ago($time)
     {
-        $timeNow  = date("Y-m-d H:i:s", time());
-        $timeNow  = strtotime($timeNow);
-        $timeShow = strtotime($time);
-        $dur      = $timeNow - $timeShow;
-        if ($dur < 0) {
-            return $time;
-        } else {
-            if ($dur < 60) {
-                if ($dur === 0) return '刚刚';
-                return $dur . '秒前';
-            } else {
-                if ($dur < 3600) {
-                    return floor($dur / 60) . '分钟前';
-                } else {
-                    if ($dur < 86400) {
-                        return floor($dur / 3600) . '小时前';
-                    } else {
-                        if ($dur < 259200) {
-                            return floor($dur / 86400) . '天前';
-                        } else {
-                            return date_diff(new \DateTime($time), new \DateTime())->m . '月前';
-                        }
-                    }
-                }
-            }
-        }
+        $y = date_diff(new \DateTime($time), new \DateTime())->y;
+        $m = date_diff(new \DateTime($time), new \DateTime())->m;
+        $d = date_diff(new \DateTime($time), new \DateTime())->d;
+        $h = date_diff(new \DateTime($time), new \DateTime())->h;
+        $i = date_diff(new \DateTime($time), new \DateTime())->i;
+        $s = date_diff(new \DateTime($time), new \DateTime())->s;
+        if ($y > 0) return "{$y}年前";
+        if ($m > 0) return "{$m}月前";
+        if ($d > 0) return "{$d}天前";
+        if ($h > 0) return "{$h}小时前";
+        if ($i > 0) return "{$i}分钟前";
+        if ($s > 0) return "{$s}秒前";
+        return '刚刚';
     }
 }

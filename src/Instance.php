@@ -10,6 +10,7 @@ class Instance
      * @return DateTime
      */
     public static function DateTime() {
+        ini_set('date.timezone', 'Asia/ShangHai');
         return new DateTime();
     }
 
