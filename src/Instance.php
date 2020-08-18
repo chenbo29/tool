@@ -25,4 +25,8 @@ class Instance
     public static function Oss($keyId, $keySecret, $endPoint, $ossDomain, $bucket) {
         return new Oss($keyId, $keySecret, $endPoint, $ossDomain, $bucket);
     }
+
+    public static function Star() {
+        return new Star();
+    }
 }
