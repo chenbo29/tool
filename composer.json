@@ -18,6 +18,8 @@
     "require": {
         "php": "^7.1",
         "aliyuncs/oss-sdk-php": "^2.3",
-        "ramsey/uuid": "^3.9"
+        "ramsey/uuid": "^3.9",
+        "guzzlehttp/guzzle": "^7.0",
+        "ralouphie/mimey": "^2.1"
     }
 }

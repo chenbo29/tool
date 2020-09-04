@@ -15,14 +15,14 @@ class Instance
     }
 
     /**
-     * @param $keyId 密钥id
-     * @param $keySecret 密钥secret
-     * @param $endPoint 地域节点
-     * @param $ossDomain 访问域名
-     * @param $bucket
+     * @param string $keyId 密钥id
+     * @param string $keySecret 密钥secret
+     * @param string $endPoint 地域节点
+     * @param string $ossDomain 访问域名
+     * @param string $bucket
      * @return Oss
      */
-    public static function Oss($keyId, $keySecret, $endPoint, $ossDomain, $bucket) {
+    public static function Oss(string $keyId, string $keySecret, string $endPoint, string $ossDomain, string $bucket) {
         return new Oss($keyId, $keySecret, $endPoint, $ossDomain, $bucket);
     }
 
