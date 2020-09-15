@@ -4,6 +4,7 @@
 namespace chenbo29\Tool;
 
 
+use Endroid\QrCode\QrCode;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -110,6 +111,29 @@ class Oss implements Upload
             $ossClient->putObject($this->bucket, $fileName, file_get_contents($filePath));
         } catch (OssException $e) {
             throw new Exception('oss upload by path failed');
+        }
+        return sprintf($this->ossDomain . '/' . $fileName);
+    }
+
+    /**
+     * @param QrCode $qrCode
+     * @return string
+     * @throws Exception
+     */
+    public function uploadWithQrcode(QrCode $qrCode)
+    {
+        $mime     = new MimeTypes();
+        $fileName = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . $mime->getExtension($qrCode->getContentType());
+        try {
+            $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
+//        $options = array(
+//            OssClient::OSS_HEADERS => array(
+//                'x-oss-meta-info'  => 'your info'
+//            ),
+//        );
+            $ossClient->putObject($this->bucket, $fileName, $qrCode->writeString());
+        } catch (OssException $e) {
+            throw new Exception('oss upload by data failed');
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
