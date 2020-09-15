@@ -85,7 +85,31 @@ class Oss implements Upload
 //        );
             $ossClient->putObject($this->bucket, $fileName, file_get_contents($url));
         } catch (OssException $e) {
-            throw new Exception('oss upload failed');
+            throw new Exception('oss upload by url failed');
+        }
+        return sprintf($this->ossDomain . '/' . $fileName);
+    }
+
+    /**
+     * @param $filePath
+     * @return string
+     * @throws Exception
+     */
+    public function uploadByPath($filePath)
+    {
+        if (!file_exists($filePath)) throw new Exception("文件{$filePath}不存在");
+        $fileName = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . pathinfo($filePath, PATHINFO_EXTENSION);;
+        // todo 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
+        try {
+            $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
+//        $options = array(
+//            OssClient::OSS_HEADERS => array(
+//                'x-oss-meta-info'  => 'your info'
+//            ),
+//        );
+            $ossClient->putObject($this->bucket, $fileName, file_get_contents($filePath));
+        } catch (OssException $e) {
+            throw new Exception('oss upload by path failed');
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
