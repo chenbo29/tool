@@ -137,4 +137,19 @@ class Oss implements Upload
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
+
+    /**
+     * @param $objectName
+     * @return bool
+     * @throws Exception
+     */
+    public function delete($objectName) {
+        try {
+            $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
+            $ossClient->deleteObject($this->bucket, $objectName);
+        } catch (OssException $e) {
+            throw new Exception('oss delete failed');
+        }
+        return true;
+    }
 }
