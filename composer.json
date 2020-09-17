@@ -21,6 +21,8 @@
         "ramsey/uuid": "^3.9",
         "guzzlehttp/guzzle": "^7.0",
         "ralouphie/mimey": "^2.1",
-        "endroid/qr-code": "^3.9"
+        "endroid/qr-code": "^3.9",
+      "ext-redis": "*",
+      "ext-json": "*"
     }
 }
