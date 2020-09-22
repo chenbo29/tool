@@ -16,6 +16,7 @@ use chenbo29\Tool\inter\Upload;
 
 class Oss implements Upload
 {
+    public $path = '';
     public $keyId;
     public $keySecret;
     public $endPoint;
@@ -32,6 +33,14 @@ class Oss implements Upload
     }
 
     /**
+     * @param mixed $path
+     */
+    public function setPath($path): void
+    {
+        $this->path = $path;
+    }
+
+    /**
      * @param $file
      * @return string
      * @throws Exception
@@ -40,7 +49,6 @@ class Oss implements Upload
     {
         $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
         $fileName  = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . $extension;
-        // todo 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
         try {
             $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
 //        $options = array(
@@ -48,11 +56,11 @@ class Oss implements Upload
 //                'x-oss-meta-info'  => 'your info'
 //            ),
 //        );
-            $ossClient->putObject($this->bucket, $fileName, file_get_contents($file['tmp_name']));
+            $ossClient->putObject($this->bucket, $this->path . $fileName, file_get_contents($file['tmp_name']));
         } catch (OssException $e) {
             throw new Exception("oss upload failed【{$e->getMessage()}】");
         }
-        return sprintf($this->ossDomain . '/' . $fileName);
+        return sprintf($this->ossDomain . "/{$this->path}" . $fileName);
     }
 
     /**
@@ -76,7 +84,6 @@ class Oss implements Upload
             $extension = $mimes->getExtension((string)$contentType[0]);
         }
         $fileName = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . $extension;
-        // todo 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
         try {
             $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
 //        $options = array(
@@ -84,11 +91,11 @@ class Oss implements Upload
 //                'x-oss-meta-info'  => 'your info'
 //            ),
 //        );
-            $ossClient->putObject($this->bucket, $fileName, file_get_contents($url));
+            $ossClient->putObject($this->bucket, $this->path . $fileName, file_get_contents($url));
         } catch (OssException $e) {
             throw new Exception("oss upload by url failed【{$e->getMessage()}】");
         }
-        return sprintf($this->ossDomain . '/' . $fileName);
+        return sprintf($this->ossDomain . "/{$this->path}" . $fileName);
     }
 
     /**
@@ -100,7 +107,6 @@ class Oss implements Upload
     {
         if (!file_exists($filePath)) throw new Exception("文件{$filePath}不存在");
         $fileName = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . pathinfo($filePath, PATHINFO_EXTENSION);;
-        // todo 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
         try {
             $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
 //        $options = array(
@@ -108,11 +114,11 @@ class Oss implements Upload
 //                'x-oss-meta-info'  => 'your info'
 //            ),
 //        );
-            $ossClient->putObject($this->bucket, $fileName, file_get_contents($filePath));
+            $ossClient->putObject($this->bucket, $this->path . $fileName, file_get_contents($filePath));
         } catch (OssException $e) {
             throw new Exception("oss upload by path failed【{$e->getMessage()}】");
         }
-        return sprintf($this->ossDomain . '/' . $fileName);
+        return sprintf($this->ossDomain . "/{$this->path}" . $fileName);
     }
 
     /**
@@ -131,11 +137,11 @@ class Oss implements Upload
 //                'x-oss-meta-info'  => 'your info'
 //            ),
 //        );
-            $ossClient->putObject($this->bucket, $fileName, $qrCode->writeString());
+            $ossClient->putObject($this->bucket, $this->path . $fileName, $qrCode->writeString());
         } catch (OssException $e) {
             throw new Exception("oss upload by data failed【{$e->getMessage()}】");
         }
-        return sprintf($this->ossDomain . '/' . $fileName);
+        return sprintf($this->ossDomain . "/{$this->path}" . $fileName);
     }
 
     /**
