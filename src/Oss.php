@@ -50,7 +50,7 @@ class Oss implements Upload
 //        );
             $ossClient->putObject($this->bucket, $fileName, file_get_contents($file['tmp_name']));
         } catch (OssException $e) {
-            throw new Exception('oss upload failed');
+            throw new Exception("oss upload failed【{$e->getMessage()}】");
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
@@ -86,7 +86,7 @@ class Oss implements Upload
 //        );
             $ossClient->putObject($this->bucket, $fileName, file_get_contents($url));
         } catch (OssException $e) {
-            throw new Exception('oss upload by url failed');
+            throw new Exception("oss upload by url failed【{$e->getMessage()}】");
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
@@ -110,7 +110,7 @@ class Oss implements Upload
 //        );
             $ossClient->putObject($this->bucket, $fileName, file_get_contents($filePath));
         } catch (OssException $e) {
-            throw new Exception('oss upload by path failed');
+            throw new Exception("oss upload by path failed【{$e->getMessage()}】");
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
@@ -133,7 +133,7 @@ class Oss implements Upload
 //        );
             $ossClient->putObject($this->bucket, $fileName, $qrCode->writeString());
         } catch (OssException $e) {
-            throw new Exception('oss upload by data failed');
+            throw new Exception("oss upload by data failed【{$e->getMessage()}】");
         }
         return sprintf($this->ossDomain . '/' . $fileName);
     }
@@ -148,7 +148,7 @@ class Oss implements Upload
             $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
             $ossClient->deleteObject($this->bucket, $objectName);
         } catch (OssException $e) {
-            throw new Exception('oss delete failed');
+            throw new Exception("oss delete failed【{$e->getMessage()}】");
         }
         return true;
     }
