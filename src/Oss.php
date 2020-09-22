@@ -60,7 +60,7 @@ class Oss implements Upload
      * @return string
      * @throws Exception
      */
-    public function uploadByUrl($url)
+    public function uploadByUrl(string $url)
     {
         $client = new Client();
         try {
@@ -96,7 +96,7 @@ class Oss implements Upload
      * @return string
      * @throws Exception
      */
-    public function uploadByPath($filePath)
+    public function uploadByPath(string $filePath)
     {
         if (!file_exists($filePath)) throw new Exception("文件{$filePath}不存在");
         $fileName = str_replace('_', '', Uuid::uuid4()->toString()) . '.' . pathinfo($filePath, PATHINFO_EXTENSION);;
@@ -139,17 +139,34 @@ class Oss implements Upload
     }
 
     /**
-     * @param $objectName
+     * @param string $fileName
      * @return bool
      * @throws Exception
      */
-    public function delete($objectName) {
+    public function delete(string $fileName)
+    {
         try {
             $ossClient = new OssClient($this->keyId, $this->keySecret, $this->endPoint);
-            $ossClient->deleteObject($this->bucket, $objectName);
+            $ossClient->deleteObject($this->bucket, $fileName);
         } catch (OssException $e) {
             throw new Exception("oss delete failed【{$e->getMessage()}】");
         }
         return true;
+    }
+
+    /**
+     * @param string $folderPath
+     * @return array
+     * @throws Exception
+     */
+    public function uploadWithFolder(string $folderPath)
+    {
+        if (!file_exists($folderPath)) throw new Exception('文件夹不存在');
+        $filesPath = [];
+        foreach (scandir($folderPath) as $v) {
+            if (in_array($v, ['.', '..'])) continue;
+            $filesPath[] = $this->uploadByPath($folderPath . DIRECTORY_SEPARATOR . $v);
+        }
+        return $filesPath;
     }
 }
