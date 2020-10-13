@@ -29,4 +29,8 @@ class Instance
     public static function Star() {
         return new Star();
     }
+
+    public static function File() {
+        return new File();
+    }
 }

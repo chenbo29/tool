@@ -13,7 +13,7 @@ try {
     var_dump(Instance::Star()->fontawesome(45, '#FFCC66'));
 //    var_dump(Instance::Oss('LTAI4GKXNcPx39WNGwNugGFg', 'wTjMk1CTxqpCYeN9W3SzJDR2C9og2f', 'http://oss-cn-beijing.aliyuncs.com', 'http://oss.hongxingjiankang.com', 'promotions')->uploadByUrl('https://img2018.cnblogs.com/blog/1580332/201901/1580332-20190129002421628-1234972420.png'));
     $oss = Instance::Oss('LTAI4GKXNcPx39WNGwNugGFg', 'wTjMk1CTxqpCYeN9W3SzJDR2C9og2f', 'http://oss-cn-beijing.aliyuncs.com', 'http://oss.hongxingjiankang.com', 'promotions');
-    $oss->setPath('test/');
+//    $oss->setPath('test/');
     $test = $oss->uploadByPath(__DIR__ . '/test.jpg');
     var_dump($test);
 } catch (Exception $e) {
