@@ -8,6 +8,7 @@ class File
 {
     function sizeConvert($bytes)
     {
+        $result  = $bytes;
         $bytes   = floatval($bytes);
         $arBytes = array(
             0 => array(
